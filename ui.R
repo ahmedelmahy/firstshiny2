@@ -20,13 +20,13 @@ shinyUI(fluidPage(headerPanel(
                         tableOutput("answer"),
                         htmlOutput("selectID"),
                         htmlOutput("selectcurz"),
-                        textOutput('printtext'),
-                        textOutput('printtext2')
+                        #lapply(1:4, function(i) {
+                        #        uiOutput(paste0('b', i))
+                        #})
+                        lapply(1:10, function(i) {
+                                htmlOutput(paste0('b',i))
+                        }
                         
-                        
-                        )
-                  
+                        ))))
         
         
-        
-        ))

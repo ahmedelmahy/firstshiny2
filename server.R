@@ -14,17 +14,31 @@ shinyServer(function(input, output) {
         output$selectID <- renderUI({ 
                 selectInput("IDname","Select the ID column", choices=colnames(answer()) )
         })
-        output$selectcurz <- renderUI({ 
-                selectInput("curzname","Select the courses column", choices=colnames(answer()) ,multiple=TRUE)
-        })
-        output$printtext<- renderText(class(input$IDname))
-        output$printtext2<- renderText(class(input$curzname))
-        #the_code<-reactive()
+        selectcurz <- reactive({
+                selectcurz<-selectInput("curzname","Select the courses column", choices=colnames(answer()) ,multiple=TRUE)})
         
+        output$selectcurz<-renderUI({ selectcurz()})
+        #output$printtext<- renderText(class(input$IDname))
+        #output$printtext2<- renderText(class(input$curzname))
+        #the_code<-reactive()
+        #reactive(lapply(1:4, function(i){
+        #        output[[paste0('b', i)]]<-renderUI({
+        #               numericInput(paste0('b', output$selectcurz,''))})
+        #        }))
+        
+        #lapply(1:length(selectcurz()), function(i) {
+        l<-reactive({l<-2})
+        lapply(1:2,function(i){
+                output[[paste0('b',i)]]<- renderUI({
+                        numericInput(paste0('b',i),label="",value=0)})      
+        }) 
+        
+        })
+
+
+#})
         #output$answer<-renderTable({
         #        read.csv(markslink)
         #})
         
-  })
-
-
+ # })
