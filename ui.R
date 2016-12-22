@@ -7,24 +7,16 @@
 
 library(shiny)
 
-shinyUI(fluidPage(
-
-  # Application title
-  titlePanel("Old Faithful Geyser Data"),
-
-  # Sidebar with a slider input for number of bins
-  sidebarLayout(
-    sidebarPanel(
-      sliderInput("bins",
-                  "Number of bins:",
-                  min = 1,
-                  max = 50,
-                  value = 30)
-    ),
-
-    # Show a plot of the generated distribution
-    mainPanel(
-      plotOutput("distPlot")
-    )
-  )
-))
+shinyUI(fluidPage(headerPanel(
+                        titlePanel("A program for the elective courses at Alexandria Faculty of Medicine, Egypt")),
+                  sidebarPanel(
+                        h3('hi'),
+                        textInput("question",""),
+                        h3('2-'),
+                        actionButton('action','do it')),
+                  mainPanel(
+                        tableOutput("answer"))
+        
+        
+        
+        ))
