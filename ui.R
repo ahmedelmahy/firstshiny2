@@ -13,20 +13,22 @@ shinyUI(fluidPage(headerPanel(
                         h3('publish the entry form and add the link here'),
                         textInput("form",""),
                         h3('edit the following form'),
-                        a(href=markslink_edit, "here")
+                        a(href=markslink_edit, "here"),
+                        actionButton('distribute','Go!')
+                        
                         #selectInput('IDcolumn','select the ID column',colnames(read.csvinput$form))
                         ),
                   mainPanel(
                         tableOutput("answer"),
                         htmlOutput("selectID"),
                         htmlOutput("selectcurz"),
-                        #lapply(1:4, function(i) {
-                        #        uiOutput(paste0('b', i))
-                        #})
-                        lapply(1:10, function(i) {
-                                htmlOutput(paste0('b',i))
-                        }
+                        h3('number needed for every course separated by a comma'),
+                        textInput('num','',''),
+                        tableOutput('try1'),
+                        htmlOutput('try2'),
+                        htmlOutput('try3'),
+                        htmlOutput('try4')
                         
-                        ))))
+                        )))
         
         

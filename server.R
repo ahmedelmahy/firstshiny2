@@ -8,37 +8,47 @@ markslink="https://docs.google.com/spreadsheets/d/1_P1IaWKQp5M478r46NQrao5v-vGey
 library(shiny)
 
 shinyServer(function(input, output) {
-        answer<-reactive({
-                answer=read.csv(input$form)})
-        #output$answer<-renderTable({answer})
+        answer=reactive({read.csv(input$form)})
         output$selectID <- renderUI({ 
-                selectInput("IDname","Select the ID column", choices=colnames(answer()) )
+                selectInput("IDname","Select the ID column", choices=colnames(answer()))})
+                   
+        
+        output$selectcurz<-renderUI({ 
+                selectInput("curzname","Select the courses column", choices=colnames(answer()) 
+                                                  ,multiple=TRUE)})
+        
+        
+        output$try2=renderPrint({input$IDname})
+        output$try3=renderPrint({input$curzname})
+        output$try4=renderPrint({input$num})
+        
+        
+        
+        #
+        observeEvent(input$distribute,{
+                formpath=input$form
+                dat<-read.csv(formpath,encoding='UTF-8')
+                marksfile<-read.csv(markslink,encoding='UTF-8')
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
         })
-        selectcurz <- reactive({
-                selectcurz<-selectInput("curzname","Select the courses column", choices=colnames(answer()) ,multiple=TRUE)})
         
-        output$selectcurz<-renderUI({ selectcurz()})
-        #output$printtext<- renderText(class(input$IDname))
-        #output$printtext2<- renderText(class(input$curzname))
-        #the_code<-reactive()
-        #reactive(lapply(1:4, function(i){
-        #        output[[paste0('b', i)]]<-renderUI({
-        #               numericInput(paste0('b', output$selectcurz,''))})
-        #        }))
-        
-        #lapply(1:length(selectcurz()), function(i) {
-        l<-reactive({l<-2})
-        lapply(1:2,function(i){
-                output[[paste0('b',i)]]<- renderUI({
-                        numericInput(paste0('b',i),label="",value=0)})      
-        }) 
-        
+  
         })
+        
+   
 
 
-#})
-        #output$answer<-renderTable({
-        #        read.csv(markslink)
-        #})
         
  # })
